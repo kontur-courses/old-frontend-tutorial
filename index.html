@@ -1,0 +1,2036 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="reveal/css/reveal.css">
+    <link rel="stylesheet" href="reveal/css/theme/kontur-light.css" id="theme">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal/css/highlight/idea-for-light.css">
+    <link rel="stylesheet" href="reveal/css/highlight/darkula-for-dark.css">
+    <!--[if lt IE 9]>
+    <script src="reveal/js/html5shiv.js"></script>
+    <![endif]-->
+	<script defer src="reveal/js/head.min.js"></script>
+	<script defer src="reveal/js/reveal.js"></script>
+	<script defer src="reveal/initialize.js"></script>
+	<script defer src="reveal/js/d3.min.js"></script>
+
+    <style>
+
+        .width10 {
+            width: 10%;
+        }
+
+        .width15 {
+            width: 15%;
+        }
+
+        .width25 {
+            width: 25%;
+        }
+
+        .width30 {
+            width: 30%;
+        }
+
+        .width40 {
+            width: 40%;
+        }
+
+        .width50 {
+            width: 50%;
+        }
+
+        .width75 {
+            width: 75%;
+        }
+
+        .width100 {
+            width: 100%;
+        }
+
+        .border {
+            border: black solid 3px !important;
+        }
+
+        .reveal .question {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            color: #D94440;
+        }
+
+        .flex {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+		
+		.flex-column {
+			flex-direction: column;
+		}
+		
+		.flex-row {
+			flex-direction: row;
+		}
+
+        .flex .row {
+            width: auto;
+        }
+
+        .flex .item {
+            margin: auto;
+        }
+
+		.fragment-container {
+			position: relative;
+		}
+		
+		.fragment-container .fragment {
+			position: absolute;
+			top: 0px;
+			width: 100%;
+		}
+
+        .code-small pre, pre.code-small {
+            font-size: 60%;
+        }
+
+        .code-tiny pre, pre.code-tiny {
+            font-size: 50%;
+        }
+
+        .li-1 { counter-reset: li 0 }
+        .li-2 { counter-reset: li 1 }
+        .li-3 { counter-reset: li 2 }
+        .li-4 { counter-reset: li 3 }
+        .li-5 { counter-reset: li 4 }
+        .li-6 { counter-reset: li 5 }
+        .li-7 { counter-reset: li 6 }
+        .li-8 { counter-reset: li 7 }
+        .li-9 { counter-reset: li 8 }
+        .li-10 { counter-reset: li 9 }
+        .li-11 { counter-reset: li 10 }
+        .li-12 { counter-reset: li 11 }
+        .li-13 { counter-reset: li 12 }
+        .li-14 { counter-reset: li 13 }
+        .li-15 { counter-reset: li 14 }
+        .li-16 { counter-reset: li 15 }
+
+    </style>
+
+    <script>
+        function configureExternalLinks() {
+            var host  = location.host.replace("www.", "");
+            var hostRegExp = new RegExp(host, "i");
+            var a = document.getElementsByTagName('a');
+            for (var i = 0; i < a.length; i++) {
+                var href = a[i].host;
+                if(!host || !hostRegExp.test(href)) {
+                    a[i].setAttribute('target', '_blank');
+                }
+            }
+        };
+
+		function revealConfigure(defaultConfiguration) {
+			return defaultConfiguration;
+		}
+
+		function revealReady(event) {
+            configureExternalLinks();
+		}
+	</script>
+	
+	<title>Fronend Tutorial</title>
+</head>
+<body>
+
+<div class="reveal"><div class="slides"
+  data-separator="^\r?\n---\r?\n$"
+  data-separator-vertical="^\r?\n\*\*\*\r?\n$"
+  data-attributes="\slide:\s*?(\S.+?)$"
+  data-element-attributes="\$\s*?(.+?)$"
+  >
+
+
+<section data-markdown><script type="text/template">
+
+<div class="flex">
+    <img class="width25" src="assets/logo.png" alt="Образовательные программы СКБ Контур" title="Образовательные программы СКБ Контур">
+</div>
+# Frontend Tutorial
+
+---
+
+## Как пользоваться?
+
+- Туториал разбит на шаги. Каждый шаг -- ветка в репозитории
+- После выполнения очередного шага нужно переключиться на следующую ветку
+- Можно сразу перейти на интересующий шаг: не забудь выполнить `npm install` для дозагрузки зависимостей
+- Чтобы увидеть все доступные этапы, посмотри на список веток `git branch` или список коммитов `git log --pretty=oneline`
+
+<div class="flex flex-column">
+    <div>__Нажми пробел!__</div>
+    <div style="font-size: 80px;">&#8595;</div>
+</div>
+
+***
+
+### Рекомендации
+
+При прохождении туториала попробуй [Visual Studio Code](https://code.visualstudio.com/)
+
+<div class="flex"><img class="width25" src="assets/vscode.png"></div>
+
+***
+
+### Чтобы начать
+
+Этот туториал -- продолжение [Fronend Starter Tutorial](https://kontur-csharper.github.io/frontend-starter-tutorial)
+
+Начни с него, либо
+
+### Чтобы продолжить
+
+Склонируй репозиторий [frontend-sandbox](https://github.com/kontur-csharper/frontend-sandbox)
+
+---
+
+## Миссия
+
+В этом туториале ты создашь викторину. Она будет состоять из страницы с вопросами и страницы с результатами.
+
+В конце соберешь готовое приложение со страницей чата из Frontend Starter Tutorial и страницами викторины.
+
+***
+
+### Викторина будет выглядеть так
+ <div class="flex" style="align-items: flex-start">
+     <img class="width50" src="assets/quizpage.jpg">
+     <img class="width50" src="assets/resultpage.jpg">
+ </div>
+
+---
+
+<div class="flex"><img class="width50" src="assets/penguinsmission.jpg"></div>
+## Миссия начинается!
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+# Шаг 1
+
+<div class="flex"><span>Переключись на ветку `step1`, чтобы продолжить</span></div>
+
+---
+
+## Подготовка
+
+1. Выполни `npm i`
+2. Запусти `npm run start` -- так запускается наше приложение
+  - в консоли при запуске написано, на каком порту оно крутится: обычно http://localhost:8080,  
+    но может еще какой-то
+3. Запусти `npm test` -- все тесты должны пройти
+
+---
+
+## Storybook
+
+Удобно разрабатывать отдельные блоки функциональности  
+"в вакууме", без громоздкого окружения  
+Поэтому появились "песочницы"
+
+<div>Песочница</div>
+
+- помогает разрабатывать компоненты
+- является библиотекой компонентов,  в которой можно посмотреть,
+как компонент работает и какие параметры хочет
+
+Воспользуемся [storybook](https://storybooks.js.org/), песочницей для react
+
+***
+
+### Установка
+
+1. Поставь библиотеку: `npm i -D @kadira/storybook@2.35`
+2. В package.json допиши в список скриптов
+   ```js
+   "storybook": "start-storybook -p 9001 -c .storybook"
+   ```
+3. В корне создай директорию `.storybook` и в ней файл `config.js` с содержимым:
+   ```js
+   import { configure } from '@kadira/storybook';
+
+   function loadStories() {
+       require('../stories/index.js');
+   }
+
+   configure(loadStories, module);
+   ```
+
+***
+
+### Запуск
+
+1. В корне создай директорию `stories` и в ней файл `index.js`
+2. В `stories/index.js` напиши:
+   ```js
+   import React from 'react';
+   import { storiesOf, action } from '@kadira/storybook';
+
+   storiesOf('Button', module)
+       .add('with text', () => (
+           <button onClick={action('clicked')}>Hello Button</button>
+       ))
+       .add('with some emoji', () => (
+           <button onClick={action('clicked')}>😀 😎 👍 💯</button>
+       ));
+   ```
+3. Запусти storybook: `npm run storybook`
+4. Открой http://localhost:9001 и полюбуйся кнопочками
+
+***
+
+### Stories для созданных компонентов
+1. Поправь конфиг сторибука
+   ```js
+   import { configure } from '@kadira/storybook';
+
+   const req = require.context('../stories', true, /\.js$/);
+
+   function loadStories() {
+       req.keys().forEach((filename) => req(filename));
+   }
+
+   configure(loadStories, module);
+```
+
+***
+
+2. <!-- $ class="li-2" -->Создай файл `stories/Message.js`
+   ```js
+   import React from 'react';
+   import Message from '../src/components/Message.jsx';
+   import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+   import { storiesOf } from '@kadira/storybook';
+
+   storiesOf('Message', module)
+       .add('default', () => (
+           <MuiThemeProvider>
+               <Message user='Username' text='Текст сообщения' />
+           </MuiThemeProvider>
+       ))
+       .add('with smile', () => (
+           <MuiThemeProvider>
+               <Message user='Username' text='Текст сообщения :)' />
+           </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+3. <!-- $ class="li-3 code-small" -->Создай файл `stories/MessageList.js`
+```js
+import React from 'react';
+import MessageList from '../src/components/MessageList.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { storiesOf, action } from '@kadira/storybook';
+
+   storiesOf('MessageList', module)
+       .add('default', () => (
+       <MuiThemeProvider>
+           <MessageList
+               messages={[
+                   {user: 'First', text: 'My First text'},
+                   {user: 'Second', text:'Я тотчас подошел к княжне, приглашая её вальсировать.'},
+                   {user: 'Third', text: 'Он отворотился и пошел от нее к окну.'},
+               ]}
+               onSend={action('Send')}
+           />
+       </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+4. <!-- $ class="li-4" -->Создай файл `stories/MessageBox.js`
+```js
+   import React from 'react';
+   import MessageBox from '../src/components/MessageBox.jsx';
+   import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+   import { storiesOf, action } from '@kadira/storybook';
+
+   storiesOf('MessageBox', module)
+       .add('default', () => (
+           <MuiThemeProvider>
+               <MessageBox onSend={action('Send')} />
+           </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Удали файл `stories/index.js`
+6. Перезагрузи страницу со сторибуком в браузере и посмотри на наши компоненты, отделенные от остального приложения
+
+---
+
+## Создание компонента в песочнице
+
+Для викторины нужны компоненты вопросов
+
+Создание нового компонента начинается с разработки в песочнице
+
+В песочнице компонент описывается во всех доступных вариантах.  
+В викторине будут вопросы с картинками и без -- соответственно, будет два описания в Storybook.
+
+***
+
+### Компонент вопроса для викторины
+
+1. Создай файл `src/components/Question.jsx` с заготовкой для компонента
+   ```js
+   import React from 'react';
+
+   export default class Question extends React.Component {
+       render() {
+           return <div>Hi!</div>;
+       }
+   }
+```
+
+***
+
+2. <!-- $ class="li-2" -->Создай сразу описание компонента для storybook в файле `stories/Question.js`
+   ```js
+   import React from 'react';
+   import Question from '../src/components/Question.jsx';
+   import {MuiThemeProvider} from 'material-ui';
+   import { storiesOf } from '@kadira/storybook';
+
+   storiesOf('Question', module)
+       .add('default', () => (
+           <MuiThemeProvider>
+               <Question />
+           </MuiThemeProvider>
+   ));
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->Открой storybook и убедись, что компонент подключился, все хорошо, можно разрабатывать дальше
+
+***
+
+4. <!-- $ class="li-4 code-small" -->Используй Material UI для реализации компонента
+   ```js
+   import React from 'react';
+   import { Card, CardTitle, CardText, CardMedia } from "material-ui/Card";
+
+   export default class Question extends React.Component {
+       render() {
+           return (
+               <Card style={{maxWidth: '600px'}}>
+                   <CardTitle title={'Вопрос № ' + this.props.index} />
+                   {this.props.image &&
+                       <CardMedia>
+                           <img src={this.props.image} />
+                       </CardMedia>
+                   }
+                   <CardText>{this.props.text}</CardText>
+               </Card>
+           );
+       }
+   }
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Поправь stories, чтобы он передавал параметры в компонент вопроса
+```js
+   storiesOf('Question', module)
+       .add('default', () => (
+           <MuiThemeProvider>
+               <Question index={5} text='Какой вид тигров самый крупный?' />
+           </MuiThemeProvider>
+       ))
+       .add('with image', () => (
+           <MuiThemeProvider>
+               <Question index={5}
+                   image='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Siberischer_tiger_de_edit02.jpg/1024px-Siberischer_tiger_de_edit02.jpg'
+                   text='Какой вид тигров самый крупный?' />
+           </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+### Выбор ответа
+
+1. <!-- $ class="li-1" -->В блок импортов `Question.jsx` добавь строчку
+   ```js
+   import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+   ```
+2. <!-- $ class="li-2" -->Замени блок CardText на такой
+   ```html
+   <CardText>
+       <p style={{marginTop: 0}}>{this.props.text}</p>
+       <RadioButtonGroup name='variants' onChange={(event, value) => this.props.onChange(value)}>
+           {this.props.variants.map((item, index) =>
+               <RadioButton
+                   value={item.value}
+                   label={item.label}
+                   key={index}
+               />
+           )}
+       </RadioButtonGroup>
+   </CardText>
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->В stories импортируй из библиотеки сторибука метод action
+   ```js
+   import { storiesOf, action } from '@kadira/storybook';
+   ```
+
+***
+
+4. <!-- $ class="li-4" -->Обнови историю `default`
+   ```js
+   .add('default', () => (
+       <MuiThemeProvider>
+           <Question
+               index={5}
+               text='Какой вид тигров самый крупный?'
+               variants={[
+                   {value: 'amur', label: 'Амурский тигр'},
+                   {value: 'sumatrae', label: 'Суматранский тигр'},
+                   {value: 'indochn', label: 'Индокитайский тигр'},
+               ]}
+               onChange={action('onChange')}
+           />
+       </MuiThemeProvider>
+   ))
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Обнови историю `with image`
+   ```js
+   .add('with image', () => (
+       <MuiThemeProvider>
+           <Question
+               index={5}
+               image='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Siberischer_tiger_de_edit02.jpg/1024px-Siberischer_tiger_de_edit02.jpg'
+               text='Какой вид тигров самый крупный?'
+               variants={[
+                   {value: 'amur', label: 'Амурский тигр'},
+                   {value: 'sumatrae', label: 'Суматранский тигр'},
+                   {value: 'indochn', label: 'Индокитайский тигр'},
+               ]}
+               onChange={action('onChange')}
+           />
+       </MuiThemeProvider>
+   ));
+   ```
+
+---
+
+## Статические ресурсы
+
+В публичном приложении редко кто берет картинки из Википедии: это ненадежно
+
+Поэтому придется хранить статичные картинки локально  
+Для этого научим вебпак загружать локальные картинки
+
+***
+
+1. Установи лоадер файлов для вебпака  
+`npm i -D file-loader@0.10`
+2. В конфиге вебпака добавь новый лоадер для картинок
+   ```js
+   { test: /\.(jpg|png|gif)$/, exclude: /node_modules/, use: "file-loader" }
+   ```
+3. Найди в сети картинку с тиграми  
+и сохрани ее локально по пути `src/images/tiger.jpg`
+4. Теперь в файле `stories/Question.js` добавь импорт
+   ```js
+   import tigerImage from '../src/images/tiger.jpg';
+   ```
+5. Замени параметр image у истории "with image", вместо ссылки напиши переменную `tigerImage`
+
+---
+
+## Результаты шага 1
+
+<div>Теперь ты знаешь:</div>
+
+ - фронтендеры используют песочницы для разработки компонентов "в вакууме"
+ - песочница позволяет показать компонент во всех состояниях
+ - вебпак умеет загружать статические файлы
+
+<div>В твоем приложении:</div>
+
+ - установлена песочница storybook
+ - описаны stories для компонентов из домашней работы
+ - создан новый компонент: компонент вопроса викторины
+ - вебпак теперь умеет загружать картинки
+
+<div class="flex"><span>Итоговый код в ветке `step1-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 2
+
+<div class="flex"><span>Переключись на ветку `step2`, чтобы продолжить</span></div>
+
+---
+
+## Enzyme
+
+<div>Тестирование компонента включает</div>
+
+  - успешный рендеринг
+  - проверку реагирования на действия пользователя
+
+<div>Обычно для этого используют функциональные тесты, которые</div>
+
+- симулируют действия пользователя
+- выполняются медленно из-за использования браузера
+
+Enzyme позволяет "рендерить" и проверять работоспособность
+React-компонентов без браузера
+
+<div class="flex"><img class="width15" src="assets/enzyme.png"></div>
+
+***
+
+<div class="question">?</div>
+<div class="flex">Какие тесты можно написать на компонент Question?</div>
+
+***
+
+1. <!-- $ class="li-1" -->Установи пакеты `npm i -D enzyme@2.7 react-addons-test-utils@15.4 chai@3.5 sinon@1.17`
+
+`enzyme` имитирует рендер компонента
+
+`react-addons-test-utils` учит React запускаться в тестовом окружении
+
+`chai` предоставляет некоторые инструменты для тестирования
+
+`sinon` крутая штука для того, чтобы подменять вызовы событий
+
+***
+
+2. <!-- $ class="li-2 code-tiny" -->Создай файл `tests/QuestionSpec.js`
+   ```js
+   import React from 'react';
+   import { expect } from 'chai';
+   import { shallow } from 'enzyme';
+   import sinon from 'sinon';
+
+   import Question from '../src/components/Question.jsx';
+
+   describe('<Question />', () => {
+
+       it('должен генерировать две радио-кнопки', () => {
+           const wrapper = shallow(
+               <Question variants={[{value: 'val1', label: 'text1'}, {value: 'val2', label: 'text2'}]} />
+           );
+           expect(wrapper.find('RadioButton').length).to.equal(2);
+       });
+
+       it('должен вызывать событие onChange при клике по радио-кнопкам', () => {
+           const onChange = sinon.spy();
+           const wrapper = shallow(
+               <Question
+                   onChange={onChange}
+                   variants={[{value: 'val1', label: 'text1'}, {value: 'val2', label: 'text2'}]}
+               />
+           );
+           wrapper.find('RadioButtonGroup').simulate('change', 'val1');
+           expect(onChange.callCount).to.equal(1);
+       });
+
+       it('должен показывать картинку, если передан параметр image', () => {
+           const wrapper = shallow(
+               <Question
+                   image='url-to-image'
+                   variants={[{value: 'val1', label: 'text1'}, {value: 'val2', label: 'text2'}]}
+               />
+           );
+           expect(wrapper.find('CardMedia').exists()).to.equal(true);
+       });
+
+       it('не должен показывать картинку, если не передан параметр image', () => {
+           const wrapper = shallow(
+               <Question
+                   variants={[{value: 'val1', label: 'text1'}, {value: 'val2', label: 'text2'}]}
+               />
+           );
+           expect(wrapper.find('CardMedia').exists()).to.equal(false);
+       });
+   });
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->Запусти `npm test` -- все должно проходить безошибочно
+
+---
+
+## Еще больше компонентов
+
+***
+
+### Компонент Список вопросов
+
+1. <!-- $ class="li-1 code-small" -->Создай компонент в `src/components/QuestionList.jsx`
+   ```js
+   import React from 'react';
+   import Question from './Question.jsx';
+
+   export default class QuestionList extends React.Component {
+       render() {
+           return (
+               <div>
+                   {this.props.questions.map((item, index) =>
+                       <Question
+                           key={index}
+                           index={index + 1}
+                           image={item.image}
+                           text={item.text}
+                           variants={item.variants}
+                           onChange={value => this.props.onChange(value, index)}
+                       />
+                   )}
+               </div>
+           );
+       }
+   }
+   ```
+
+***
+
+2. <!-- $ class="li-2 code-small" -->Создай story
+   ```js
+   import React from 'react';
+   import QuestionList from '../src/components/QuestionList.jsx';
+   import { MuiThemeProvider }  from 'material-ui';
+   import { storiesOf, action } from '@kadira/storybook';
+
+   const questions = [
+       {
+           text: 'Какой вид тигров самый крупный?',
+           variants: [
+               {value: 'amur', label: 'Амурский тигр'},
+               {value: 'sumatrae', label: 'Суматранский тигр'},
+               {value: 'indochn', label: 'Индокитайский тигр'}
+           ]
+       },
+       {
+           text: 'Какая из этих птиц умеет летать?',
+           variants: [
+               {value: 'kiwi', label: 'Киви'},
+               {value: 'baklan', label: 'Баклан'},
+               {value: 'raphinae', label: 'Дронт'},
+               {value: 'pinguin', label: 'Императорский пингвин'}
+           ]
+       },
+   ];
+
+   storiesOf('QuestionList', module)
+       .add('default', () => (
+           <MuiThemeProvider>
+               <QuestionList
+                   questions={questions}
+                   onChange={action('onChange')}
+               />
+           </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->Посмотри в storybook на список вопросов: вопросы слиплись.  
+Чтобы разлепить, добавь в компоненте вопроса нижний отступ
+   ```js
+   <Card style={{maxWidth: '600px', marginBottom: '10px'}}>
+   ```
+
+***
+
+4. <!-- $ class="li-4 code-small" -->Теперь добавь тесты в `tests/QuestionListSpec.js`
+   ```js
+   import React from 'react';
+   import { expect } from 'chai';
+   import { shallow } from 'enzyme';
+   import sinon from 'sinon';
+
+   import QuestionList from '../src/components/QuestionList.jsx';
+
+   describe('<QuestionList />', () => {
+       it('должен создавать столько вопросов, сколько в него передано', () => {
+           const wrapper = shallow(
+               <QuestionList
+                   questions={[{}, {}, {}, {}]}
+               />
+           );
+           expect(wrapper.find('Question').length).to.equal(4);
+       });
+
+       it('должен вызывать onChange при изменениях ответов', () => {
+           const onChange = sinon.spy();
+           const wrapper = shallow(
+               <QuestionList
+                   questions={[{
+                       variants: [
+                           {value: 'val1', label: 'text1'},
+                           {value: 'val2', label: 'text2'}
+                       ]
+                   }]}
+                   onChange={onChange}
+               />
+           );
+
+           wrapper.find('Question').simulate('change', 'val1');
+           expect(onChange.callCount).to.equal(1);
+       });
+   });
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Выполни `npm test`: новые тесты должны проходить
+
+***
+
+### Компонент Страница викторины
+
+1. <!-- $ class="li-1 code-small" -->Создай страницу в `src/components/QuizPage.jsx`
+   ```js
+   import React from 'react';
+   import QuestionList from './QuestionList.jsx';
+   import { AppBar, RaisedButton } from 'material-ui'
+
+   export default class QuizPage extends React.Component {
+       render() {
+           return (
+               <div style={{margin: '0 auto', maxWidth: '600px'}}>
+                   <AppBar
+                       title='Викторина'
+                       showMenuIconButton={false}
+                   />
+                   {this.props.questions && this.props.questions.length !== 0 &&
+                   <div style={{marginTop: '20px'}}>
+                       <QuestionList
+                           questions={this.props.questions}
+                           onChange={this.props.onChange}
+                       />
+                   </div>
+                   }
+                   {this.props.questions && this.props.questions.length !== 0 &&
+                   <RaisedButton
+                       style={{marginTop: '10px'}}
+                       label='Проверить'
+                       primary
+                       onClick={this.props.onSubmit}
+                   />
+                   }
+               </div>
+           );
+       }
+   }
+   ```
+
+***
+
+2. <!-- $ class="li-2 code-small" -->Создай story
+   ```js
+   import React from 'react';
+   import QuizPage from '../src/components/QuizPage.jsx';
+   import { MuiThemeProvider }  from 'material-ui';
+   import { storiesOf, action } from '@kadira/storybook';
+
+   const questions = [
+       {
+           text: 'Какой вид тигров самый крупный?',
+           variants: [
+               {value: 'amur', label: 'Амурский тигр'},
+               {value: 'sumatrae', label: 'Суматранский тигр'},
+               {value: 'indochn', label: 'Индокитайский тигр'}
+           ]
+       },
+       {
+           text: 'Какая из этих птиц умеет летать?',
+           variants: [
+               {value: 'kiwi', label: 'Киви'},
+               {value: 'baklan', label: 'Баклан'},
+               {value: 'raphinae', label: 'Дронт'},
+               {value: 'pinguin', label: 'Императорский пингвин'}
+           ]
+       },
+   ];
+
+   storiesOf('QuizPage', module)
+       .add('without question', () => (
+           <MuiThemeProvider>
+               <QuizPage
+                   onChange={action('onChange')}
+                   onSubmit={action('onSubmit')}
+               />
+           </MuiThemeProvider>
+       ))
+       .add('with questions', () => (
+           <MuiThemeProvider>
+               <QuizPage
+                   questions={questions}
+                   onChange={action('onChange')}
+                   onSubmit={action('onSubmit')}
+               />
+           </MuiThemeProvider>
+       ));
+   ```
+
+***
+
+3. <!-- $ class="li-3 code-small" -->Напиши самостоятельно тесты в `tests/QuizPageSpec.js`  
+В них проверь, что
+  - блок вопросов и кнопка не показываются,  
+  если вопросы не переданы
+  - блок вопросов и кнопка показываются, если вопросы переданы
+  - после клика по кнопке вызывается onSubmit
+
+---
+
+## Результаты шага 2
+
+<div>Теперь ты знаешь:</div>
+
+ - как протестировать react-компоненты
+ - что тестировать в компонентах
+
+<div>В твоем приложении:</div>
+
+ - появились юнит-тесты к компоненту вопроса
+ - добавились новые компоненты: список вопросов и страница викторины
+
+<div class="flex"><span>Итоговый код в ветке `step2-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 3
+
+<div class="flex"><span>Переключись на ветку `step3`, чтобы продолжить</span></div>
+
+---
+
+## Реорганизация файлов
+
+Сейчас появилось несколько компонентов,
+которые будут представлять собой один блок:
+вопрос, список вопросов и страница викторины.
+
+<div class="flex">__Самое время прибраться!__</div>
+
+***
+
+### Реорганизация
+
+1. Внутри директории `src` создай директорию `Quiz`,  
+а ней директорию `components`,  
+и перенести туда все три компонента викторины
+
+   ```
+   -src
+       -components
+       -images
+       -Quiz
+           -components
+               -QuizPage.jsx
+               -Question.jsx
+               -QuestionList.jsx
+       -index.js
+       -index.jsx
+       -emoji.js
+   ```
+
+***
+
+2. <!-- $ class="li-2" -->Поменяй адреса до файлов в тестах и stories  
+Убедись, что тесты работают и нет ошибок в сторибуке
+3. Удали файл `src/index.js`: он уже давно не нужен
+
+***
+
+### Перенастройка сборки
+
+Теперь будем собирать все из директории Quiz отдельно от остального
+
+1. <!-- $ class="li-1" -->Создай в директории `Quiz` файл `index.js`:
+он будет похож на `index.jsx`, только вместо App, будет компонент QuizPage.
+   ```js
+   import React from 'react';
+   import ReactDom from 'react-dom';
+   import QuizPage from './components/QuizPage.jsx';
+   import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+   ReactDom.render(
+       <MuiThemeProvider>
+           <QuizPage />
+       </MuiThemeProvider>,
+       document.getElementById('app'));
+   ```
+
+***
+
+2. <!-- $ class="li-2" -->Поменяй конфиг webpack
+  - entry-point должна стать объектом  
+  с двумя точками входа: default и quiz
+     ```js
+     entry: {
+         default: "./src/index.jsx",
+         quiz: "./src/Quiz/index.js"
+     }
+     ```
+  - Имена собранных файлов должны различаться
+     ```js
+     output: {
+         filename: "[name].bundle.js"
+     }
+     ```
+[Подробнее](https://webpack.js.org/configuration/output/#output-filename) о переменных в webpack
+
+***
+
+3. <!-- $ class="li-3" -->Перезапусти `webpack-dev-server`
+4. <!-- $ class="li-4" -->Теперь в зависимости от подключенного в `index.html` скрипта:  
+`default.bundle.js` или `quiz.bundle.js` --  
+мы будем получать два разных приложения
+5. <!-- $ class="li-5" -->Замени скрипт на `quiz.bundle.js`
+
+---
+
+## Результаты шага 3
+
+<div>Теперь ты знаешь:</div>
+
+ - что лучше хранить файлы с общей логикой рядом
+ - один из вариантов как организовать файлы в проекте
+ - как убедить вебпак собирать код в несколько файлов
+
+<div>В твоем приложении:</div>
+
+ - поменялась организация файлов
+ - есть две точки входа: для викторины и для чата
+
+<div class="flex"><span>Итоговый код в ветке `step3-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 4
+
+<div class="flex"><span>Переключись на ветку `step4`, чтобы продолжить</span></div>
+
+---
+
+## React-way
+
+Реакт позволяет делать компоненты _умными_ и _глупыми_
+
+У умных _Smart_-компонентов есть состояние state  
+У глупых _Dumb_-компонентов нет состояния:  
+они зависят только от props
+
+Правильно делать компоненты глупыми насколько это возможно
+
+***
+
+### Идеальный компонент
+
+Представим текстовое поле в идеальном мире реакта
+
+Мы передаем в него строку, которую он должен показать,  
+и на каждое нажатие кнопки пользователем,  
+он говорит родителю: "Эй, тут новая строчка!"
+
+Родитель где-то сохраняет новую строчку  
+и говорит полю: "Покажи теперь вот эту строчку"
+
+Без этой команды текстовое поле не изменяет свое отображение
+
+```html
+<Input value={value} onChange={(newValue) => value = newValue} />
+```
+
+***
+
+### Идеальное приложение
+
+Идеальное приложение хранит все свои данные в одном месте
+
+И имеет только одно место, где эти данные меняются,  
+а потом рассылаются всем заинтересованным
+
+
+***
+
+<div class="flex"><img src="assets/redux1.svg"></div>
+
+***
+
+<div class="flex"><img src="assets/redux2.svg"></div>
+
+---
+
+## Redux
+
+Один из способов сделать приложение идеальным с точки зрения по react-way
+можно использовать библиотеку _Redux_
+
+Она позволяет хранить данные в одном месте, называемом _store_
+
+<div class="flex"><img class="width25" src="assets/redux.png"></div>
+
+***
+
+### Установка и подключение
+
+1. <!-- $ class="li-1" -->Установи редакс и библиотеку для соединения редакса с реактом:  
+`npm i -S redux@3.6 react-redux@5.0`
+
+***
+
+2. <!-- $ class="li-2 code-small" -->Теперь в файл `Quiz/index.js` добавь store
+   ```js
+   import { createStore } from 'redux';
+   ```
+   ```js
+   const getInitialState = () => {
+       const initialState = {
+           questions: [
+               {
+                   text: 'Какой вид тигров самый крупный?',
+                   variants: [
+                       {value: 'amur', label: 'Амурский тигр', isRight: true},
+                       {value: 'sumatrae', label: 'Суматранский тигр', isRight: false},
+                       {value: 'indochn', label: 'Индокитайский тигр', isRight: false}
+                   ]
+               },
+               {
+                   text: 'Какая из этих птиц умеет летать?',
+                   variants: [
+                       {value: 'kiwi', label: 'Киви', isRight: false},
+                       {value: 'baklan', label: 'Баклан', isRight: true},
+                       {value: 'raphinae', label: 'Дронт', isRight: false},
+                       {value: 'pinguin', label: 'Императорский пингвин', isRight: false}
+                   ]
+               },
+           ],
+       };
+       return initialState;
+   };
+   const store = createStore(getInitialState);
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->Создай провайдер из библиотеки react-redux,  
+чтобы приложение знало о созданном сторе
+  - В список импортов в `Quiz/index.js` добавь
+     ```js
+     import { Provider } from 'react-redux';
+     ```
+  - Блок рендеринга оберни в Provider
+     ```html
+     <Provider store={store}>
+         <MuiThemeProvider>
+             <QuizPage />
+         </MuiThemeProvider>
+     </Provider>
+     ```
+
+***
+
+4. <!-- $ class="li-4 code-small" -->Чтобы передать данные из стора на страничку,  
+создай файл `Quiz/containers/QuizPage.js` 
+   ```js
+   import QuizPage from '../components/QuizPage.jsx';
+   import { connect } from 'react-redux';
+   function props(state) {
+       return {
+           questions: state.questions
+       }
+   }
+
+   function actions (dispatch) {
+       return {
+           onChange: (...args) => console.log(args),
+           onSubmit: (...args) => console.log(args),
+       }
+   }
+
+   export default connect(props, actions)(QuizPage);
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Замени в `Quiz/index.js` ссылку на `QuizPage`
+   ```js
+   import QuizPage from './containers/QuizPage.js';
+   ```
+6. <!-- $ class="li-6" -->Посмотри на страничку с викториной
+
+***
+
+### Изменение состояния в Redux
+
+Сейчас мы умеем только прокидывать данные из стора в компоненты, но не умеем изменять данные в сторе  
+Для этого нам нужен редьюсер
+
+_Редьюсер_ (_reducer_ -- переходник) -- это такая функция,
+которая ловит события, делает что-то со стором и возвращает новый стор
+
+<div class="flex"><img class="width50" src="assets/reducer.png"></div>
+
+***
+
+#### Сохранение ответов
+
+1. Чтобы ответы сохранялись, нужно место, куда сохранять  
+  - Добавь поле answers в стейт в функции `getInitialState` в `Quiz/index.js`
+     ```js
+     answers: []
+     ```
+2. Передай в QuizPage этот массив с ответами  
+  - В файле `Quiz/containers/QuizPage.js` функция props должна возвращать объект
+     ```js
+     {
+         questions: state.questions,
+         answers: state.answers
+     }
+     ```
+
+***
+
+3. <!-- $ class="li-3 code-tiny" -->Создай файл `Quiz/reducer.js` и перенеси в него `initialState` из функции `getInitialState` из файла `Quiz/index.js`
+   ```js
+   const initialState = {
+       questions: [
+           {
+               text: 'Какой вид тигров самый крупный?',
+               variants: [
+                   {value: 'amur', label: 'Амурский тигр', isRight: true},
+                   {value: 'sumatrae', label: 'Суматранский тигр', isRight: false},
+                   {value: 'indochn', label: 'Индокитайский тигр', isRight: false}
+               ]
+           },
+           {
+               text: 'Какая из этих птиц умеет летать?',
+               variants: [
+                   {value: 'kiwi', label: 'Киви', isRight: false},
+                   {value: 'baklan', label: 'Баклан', isRight: true},
+                   {value: 'raphinae', label: 'Дронт', isRight: false},
+                   {value: 'pinguin', label: 'Императорский пингвин', isRight: false}
+               ]
+           },
+       ],
+       answers: []
+   };
+   ```
+
+***
+
+4. <!-- $ class="li-4" -->Добавь в `Quiz/reducer.js` функцию, которая будет обрабатывать  
+action 'answerChange' -- это и есть `reducer`
+   ```js
+   export default function (state = initialState, action) {
+       if (action.type === 'answerChange') {
+           const newAnswers = [].concat(state.answers);
+           newAnswers[action.index] = action.value;
+           return {
+               ...state,
+               answers: newAnswers
+           }
+       }
+
+       return state;
+   }
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Мы воспользовались spread-оператором (`return {...state}`) -- поможем ему работать
+  - Установи плагин для бабеля  
+     ```text
+     npm i -D babel-plugin-transform-object-rest-spread@6.23
+     ```
+  - Добавь новый плагин в `.babelrc`
+     ```js
+     {
+       "presets": [
+         "es2015",
+         "react"
+       ],
+       "plugins": [
+         "transform-object-rest-spread"
+       ]
+     }
+     ```
+
+***
+
+6. <!-- $ class="li-6" -->Также включи `.eslintrc.json` поддержку spread-оператора
+   ```js
+   {
+     "parserOptions": {
+       "ecmaFeatures": {
+         "experimentalObjectRestSpread": true
+       }
+     }
+   }
+   ```
+
+***
+
+7. <!-- $ class="li-7" -->Подключи редьюсер
+  - Открой `Quiz/index.js`
+  - В блок импортов вставь свеженаписанный редьюсер  
+     ```js
+     import reducer from './reducer';
+     ```
+  - Удали функцию `getInitialState`
+  - В строке, где создается store, замени getInitialState на reducer
+     ```js
+     const store = createStore(reducer);
+     ```
+
+***
+
+8. <!-- $ class="li-8" -->Используй редьюсер через действия
+  - Открой `Quiz/containers/QuizPage.js`
+  - В функции actions замени строчку описания `onChange` на такую
+     ```js
+     onChange: (value, index) => dispatch({type: 'answerChange', index: index, value: value})
+     ```
+
+***
+
+9. <!-- $ class="li-9" -->Перезапусти `webpack-dev-server`
+10. <!-- $ class="li-10" -->Чтобы увидеть, что ответы действительно меняются,  
+в метод `render` в `QuizPage.jsx` добавь над `return` строчку
+   ```js
+   console.log(this.props.answers);
+   ```
+11. <!-- $ class="li-11" -->Проверь, что все хорошо =)
+
+***
+
+#### Проверка ответов
+
+Проверку ответов сделаем в компоненте страницы
+
+1. Страница должна теперь иметь состояние: знать, надо ли показывать и количество правильных ответов  
+Для инициализации состояния добавь в `QuizPage.jsx` конструктор
+   ```js
+   constructor() {
+       super();
+       this.state = {
+           showResultCounter: false,
+           amountRightAnswers: 0
+       };
+   }
+   ```
+2. Удали не нужный больше `console.log`
+
+***
+
+3. <!-- $ class="li-3" -->Добавь в начало в метода `render` такие строки
+   ```js
+   const { questions } = this.props;
+   const { showResultCounter, amountRightAnswers } = this.state;
+   ```
+Замени `this.props.questions` на `questions`: теперь так тоже будет работать
+
+***
+
+4. <!-- $ class="li-4" -->После кнопки "Проверить" добавь
+   ```js
+   {showResultCounter &&
+       <p>
+           Правильных ответов: {amountRightAnswers}/{questions.length}
+       </p>
+   }
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Напиши новый метод для проверки ответов
+   ```js
+   checkAnswers() {
+       const { questions, answers } = this.props;
+       const rightAnswers = answers && answers.filter((item, index) => {
+           const variants = questions[index].variants;
+           const option = variants.find(option => option.value === item);
+           return option ? option.isRight : false;
+       }).length;
+
+       this.setState({
+           showResultCounter: true,
+           amountRightAnswers: rightAnswers || 0
+       });
+       this.props.onSubmit();
+   }
+   ```
+
+***
+
+6. <!-- $ class="li-6" -->В кнопке "Проверить" замени обработчик клика
+   ```js
+   onClick={() => this.checkAnswers()}
+   ```
+7. <!-- $ class="li-7" -->Убедись, что на странице показывается число правильных ответов
+
+---
+
+## Результаты шага 4
+
+<div>Теперь ты знаешь:</div>
+
+ - как делать идеальное приложение с точки зрения react
+ - где хранить данные в приложении
+ - как управлять данными с помощью reducer
+
+<div>В твоем приложении:</div>
+
+ - появилось хранилище для данных
+ - данные меняются при изменении ответов
+ - есть функция проверки ответов
+
+<div class="flex"><span>Итоговый код в ветке `step4-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 5
+
+<div class="flex"><span>Переключись на ветку `step5`, чтобы продолжить</span></div>
+
+---
+
+## Поддельное API
+
+Сейчас вопросы записаны прямо в скриптах -- "захардкожены"
+
+А в реальности они приходят с сервера асинхронно: непонятно, когда загрузятся -- приложение должно уметь с этим жить
+
+Использовать настоящий бэкенд -- это плохая идея, потому что к моменту разработки фронтенда он часто еще не реализован
+
+<div class="flex">__Сымитируем асинхронное API сервера!__</div>
+
+***
+
+### Кратко о Promise
+
+_Promise_ -- в переводе "обещание". Это один из вариантов, как написать асинхронный JS. 
+
+```js
+var promise = new Promise(function(resolve, reject) {
+  // выполнить что-то, возможно, асинхронно…
+
+  if (/* все прошло без ошибок */) {
+    resolve("Сработало!");
+  }
+  else {
+    reject(Error("Что-то сломалось!"));
+  }
+});
+
+promise.then(onResolve, onReject)
+```
+
+[Одно из объяснений промисов на примере бургерной вечеринки](https://habrahabr.ru/company/nixsolutions/blog/323066/)
+
+
+***
+
+### Кратко об async/await
+
+В ES2017 появилась очень классная вещь, которая во многих языках уже есть -- async-await
+
+`async-await` — это синтаксический сахар для промисов  
+И, хотя ES2017 реализован еще не везде ([подержка браузерами](https://caniuse.com/#feat=async-functions)), 
+благодаря Babel мы можем пользоваться им уже сейчас
+
+При написании функции с ключевым словом `async`, результат возвращается в виде промиса
+
+Вызов функции, перед которым написано `await`, ожидает выполнения промиса из этой функции
+
+```js
+async function asyncFunction () {
+    // some code
+    var result = await alsoAsyncFunction();
+    return result;
+}
+```
+
+***
+
+### Создание имитации API
+
+1. <!-- $ class="li-1 code-small" -->Создай директорию `Quiz/api`. И в ней файл `fakeApi.js`
+   ```js
+   export default class FakeApi {
+       async getQuestions() {
+           return [
+               {
+                   text: 'Какой вид тигров самый крупный?',
+                   variants: [
+                       {value: 'amur', label: 'Амурский тигр', isRight: true},
+                       {value: 'sumatrae', label: 'Суматранский тигр', isRight: false},
+                       {value: 'indochn', label: 'Индокитайский тигр', isRight: false}
+                   ]
+               },
+               {
+                   text: 'Какая из этих птиц умеет летать?',
+                   variants: [
+                       {value: 'kiwi', label: 'Киви', isRight: false},
+                       {value: 'baklan', label: 'Баклан', isRight: true},
+                       {value: 'raphinae', label: 'Дронт', isRight: false},
+                       {value: 'pinguin', label: 'Императорский пингвин', isRight: false}
+                   ]
+               },
+           ];
+       }
+   }
+   ```
+
+***
+
+2. <!-- $ class="li-2" -->Чтобы имитировать загрузку с сервера нужно уметь делать небольшую задержку
+  - Напиши отдельно в этом же файле функцию `delay`
+     ```js
+     function delay(timeout) {
+         return new Promise(f => setTimeout(f, timeout));
+     }
+     ```
+  - В методе `getQuestions` допиши первой строчкой
+     ```js
+     await delay(1000);
+     ```
+
+***
+
+3. <!-- $ class="li-3" -->Поменяй версию языка в `.eslintrc.json`, чтобы ESLint не ругался на async/await
+   ```js
+   {
+     "parserOptions": {
+       "ecmaVersion": 2017
+     }
+   }
+   ```
+
+***
+
+### Подключение API
+
+Загрузка вопросов должна происходить, когда компонент показывается пользователю
+
+Чтобы сделать что-то при первой загрузке, нужно в реактовом компоненте создать метод `componentWillMount`
+
+1. Добавь функцию `componentWillMount` в `QuizPage.jsx`  
+При создании компонента она вызовет событие onLoadQuestions, если в компонент не передали вопросы
+   ```js
+   componentWillMount() {
+       if (!this.props.questions && this.props.onLoadQuestions) {
+           this.props.onLoadQuestions();
+       }
+   }
+   ```
+
+***
+
+2. <!-- $ class="li-2" -->Добавь в `stories/QuizPage.js` это событие
+   ```js
+   onLoadQuestions={action('onLoadQuestions')}
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->Теперь создай файл `Quiz/actions.js`
+   ```js
+   import FakeApi from './api/fakeApi';
+   const api = new FakeApi();
+
+   export function getQuestions () {
+       return async function (dispatch) {
+           const result = await api.getQuestions();
+           dispatch({type: 'loadedQuestions', questions: result});
+       }
+   }
+   ```
+
+***
+
+4.  <!-- $ class="li-4" -->В контейнере страницы `Quiz/containers/QuizPage`
+  - Импортируй функцию getQuestions
+     ```js
+     import { getQuestions } from '../actions';
+     ```
+  - Допиши в функцию actions новое событие
+     ```js
+     onLoadQuestions: () => dispatch(getQuestions())
+     ```
+
+***
+
+5. <!-- $ class="li-5" -->`getQuestions` создает action `'loadedQuestions'`, которое пока никто не обрабатывает. Напиши в редьюсере его обработку
+   ```js
+   if (action.type === 'loadedQuestions') {
+       return {
+           ...state,
+           questions: action.questions
+       }
+   }
+   ```
+
+***
+
+6. <!-- $ class="li-6" -->Чтобы страница вызывала апи, не надо передавать ей вопросы  
+Удали вопросы из `initialState` в `Quiz/reducer.js`
+   ```js
+   questions: null
+   ```
+
+***
+
+### Подключение middleware
+
+Если попробовать открыть страницу сейчас, то будет ошибка
+_"Actions must be plain objects. Use custom middleware for async actions."_
+
+Это Редаксу не нравится выражение `dispatch(getQuestions())`
+
+Ошибка подсказывает, что делать -- _Use custom middleware_
+
+***
+
+1. <!-- $ class="li-1" -->Установи библиотеки `redux-thunk` и `redux-promise-middleware`
+   ```text
+   npm i -S redux-thunk@2.2 redux-promise-middleware@4.2
+   ```
+
+
+`redux-thunk` дает возможность из вызова одного dispatch вызвать редьюсер несколько раз
+
+`redux-promise-middleware` позволяет делать асинхронные вещи
+
+***
+
+2. <!-- $ class="li-2" -->Импортируй эти библиотеки в `Quiz/index.js`
+   ```js
+   import thunk from 'redux-thunk';
+   import promise from 'redux-promise-middleware';
+   ```
+3. <!-- $ class="li-3" -->Из redux дополнительно нужен метод applyMiddleware
+   ```js
+   import { createStore, applyMiddleware } from 'redux';
+   ```
+4. <!-- $ class="li-4" -->Подключи middleware в store
+   ```js
+   const middleware = applyMiddleware(promise(), thunk);
+   const store = createStore(reducer, middleware);
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Теперь все должно собираться без ошибок  
+Посмотри, как вопросы появляются через секунду, после появления приложения
+
+***
+
+### Добавление loader
+
+Некрасиво, что целую секунду пока грузятся вопросы  
+не происходит ничего -- добавим лоадер
+
+***
+
+1. В компоненте `Quiz/components/QuizPage.jsx` добавь в импорт компонент CircularProgress из material-ui
+   ```js
+   import { AppBar, RaisedButton, CircularProgress } from 'material-ui';
+   ```
+2. Добавь CircularProgress после AppBar
+   ```js
+   {this.props.loading &&
+       <CircularProgress
+           style={{margin: '50px auto', display: 'block'}}
+           size={80}
+       />
+   }
+   ```
+
+***
+
+3. <!-- $ class="li-3" -->В `reducer.js` в `initialState` добавь поле `loading`
+   ```js
+   loading: false
+   ```
+4. <!-- $ class="li-4" -->В контейнере `Quiz/containers/QuizPage.js`
+в методе `props` передадим `loading` компоненту страницы
+   ```js
+   loading: state.loading
+   ```
+
+***
+
+5. <!-- $ class="li-5" -->Добавь в редьюсере обработку события начала загрузки
+   ```js
+   if (action.type === 'loadingStart') {
+       return {
+           ...state,
+           loading: true
+       }
+   }
+   ```
+
+***
+
+6. <!-- $ class="li-6" -->Там же обнови обработку окончания загрузки, чтобы лоадер выключался
+   ```js
+   if (action.type === 'loadedQuestions') {
+       return {
+           ...state,
+           loading: false,
+           questions: action.questions
+       }
+   }
+   ```
+
+***
+
+7. <!-- $ class="li-7" -->Теперь надо событие `loadingStart` сгенерировать  
+Допиши  в `actions.js` в методе `getQuestions` первой строкой async-функции
+   ```js
+   dispatch({type: 'loadingStart'});
+   ```
+8. Теперь можешь полюбоваться на лоадер!
+
+---
+
+## Результаты шага 5
+
+<div>Теперь ты знаешь:</div>
+
+ - что делать, если бэкенда еще нет, а предусмотреть асинхронность уже хочется
+
+<div>В твоем приложении:</div>
+
+ - имитируется загрузка с сервера: задержка и лоадер
+
+<div class="flex"><span>Итоговый код в ветке `step5-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 6
+
+<div class="flex"><span>Переключись на ветку `step6`, чтобы продолжить</span></div>
+
+---
+
+## Упражнение
+
+<div class="flex"><span>Создай страницу с рейтингом результатов<br>по аналогии со страницей викторины</span></div>
+
+***
+
+1. <!-- $ class="li-1" -->Создай компонент с таблицей результатов, используя сторибук
+
+<div class="flex"><img class="width50" src="assets/resulttable.jpg"></div>
+
+***
+
+2. <!-- $ class="li-2" -->Создай страницу результатов, используя сторибук
+
+<div class="flex"><img class="width50" src="assets/resultpage.jpg"></div>
+
+***
+
+3. <!-- $ class="li-3" -->Создай метод получения списка результатов в фейковом апи
+4. <!-- $ class="li-4" -->Напиши экшен получения результатов и допиши редьюсеру нужные события
+5. <!-- $ class="li-5" -->Создай новый контейнер для страницы результатов и подключи его в `index.js` вместо `QuizPage`
+
+---
+
+## Результаты шага 6
+
+<div>Теперь ты:</div>
+
+ - закрепил знания по Redux
+ - закрепил знания по имитации бэкенда
+
+<div>В твоем приложении:</div>
+
+ - появилась страница результатов викторины
+
+<div class="flex"><span>Итоговый код в ветке `step6-finished`</span></div>
+
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+# Шаг 7
+
+<div class="flex"><span>Переключись на ветку `step7`, чтобы продолжить</span></div>
+
+---
+
+## Роутинг
+
+<div class="flex"><span>Не хорошо, что надо переключать страницы в коде<br>Сделаем нормально переключение урлами</span></div>
+
+***
+
+### Установка и подключение
+
+1. Установи пакет `npm i -S react-router@3`
+2. В конфиге вебпака сделай все обратно
+  - Entry
+     ```js
+     entry: "./src/index.jsx",
+     ```
+  - Bundle
+     ```js
+     output: {
+         filename: "bundle.js"
+     }
+     ```
+3. В `index.html` замени бандл на `bundle.js`
+4. Перезапусти `webpack-dev-server`
+
+***
+
+5. <!-- $ class="li-5 code-small" -->Перенеси все из `src/Quiz/index.js` в `src/index.jsx`  
+В результате получится
+   ```js
+   import injectTapEventPlugin from 'react-tap-event-plugin';
+   injectTapEventPlugin();
+   import React from 'react';
+   import ReactDom from 'react-dom';
+   import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+   import { createStore, applyMiddleware } from 'redux';
+   import { Provider } from 'react-redux';
+   import thunk from 'redux-thunk';
+   import promise from 'redux-promise-middleware';
+
+   import App from './components/App.jsx';
+   import QuizPage from './Quiz/containers/QuizPage.js';
+   import ResultPage from './Quiz/containers/ResultPage.js';
+   import reducer from './Quiz/reducer';
+
+   const middleware = applyMiddleware(promise(), thunk);
+   const store = createStore(reducer, middleware);
+
+   ReactDom.render(
+       <Provider store={store}>
+           <MuiThemeProvider>
+               <App />
+           </MuiThemeProvider>
+       </Provider>,
+       document.getElementById('app'));
+   ```
+
+***
+
+6. <!-- $ class="li-6 code-small" -->Удали `Quiz/index.js`
+
+***
+
+7. <!-- $ class="li-7" -->Импортируй в `index.jsx` методы для роутинга
+   ```js
+   import { Route, Router, hashHistory } from 'react-router';
+   ```
+8. <!-- $ class="li-8" -->Добавь роутинг в рендеринге в `index.jsx`
+   ```html
+   <Provider store={store}>
+       <MuiThemeProvider>
+           <Router history={hashHistory}>
+               <Route path='/' component={App}/>
+               <Route path='/result' component={ResultPage}/>
+               <Route path='/quiz' component={QuizPage}/>
+           </Router>
+       </MuiThemeProvider>
+   </Provider>
+   ```
+
+***
+
+9. <!-- $ class="li-9" -->Теперь у каждой страницы есть адрес
+  - http://localhost:8080/ -- чатик
+  - http://localhost:8080/#/quiz -- викторина
+  - http://localhost:8080/#/result -- результаты
+
+***
+
+### Переходы между страницами
+
+Добавим возможность со страницы викторины перейти на страницу результатов
+
+1. Допиши в `Quiz/components/QuizPage.jsx` импорт
+   ```js
+   import { Link } from 'react-router';
+   ```
+
+***
+
+2. <!-- $ class="li-2" -->Модифицируй немного уже имеющуюся кнопку
+   ```html
+   {questions && questions.length !== 0 &&
+       <RaisedButton
+           style={{marginTop: '10px', marginRight: '10px'}}
+           label='Проверить'
+           primary
+           disabled={showResultCounter}
+           onClick={() => this.checkAnswers()}
+       />
+   }
+   ```
+3. <!-- $ class="li-3" -->Вставь после этой кнопки новую
+   ```html
+   <Link to='/result'>
+       <RaisedButton
+           style={{marginTop: '10px'}}
+           label='Посмотреть результаты'
+       />
+   </Link>
+   ```
+
+---
+
+## Сохранение результата
+
+***
+
+1. Массив, который возвращает метод `getResults` в `fakeApi`,  
+выдели в переменную `results`, которую перенеси наверх файла
+2. Создай новый метод в `fakeApi`
+   ```js
+   async addResult(result) {
+       await delay(200);
+       results.push(result);
+   }
+   ```
+3. В `actions.js` добавь функцию `addAnswer`
+   ```js
+   export function addAnswer (result) {
+       return async function () {
+           await api.addResult(result);
+       }
+   }
+   ```
+
+***
+
+4. <!-- $ class="li-4" -->В контейнере `containers/QuizPage.js`
+замени действие по сабмиту на вызов нового метода
+   ```js
+   onSubmit: (result) => dispatch(addAnswer(result)),
+   ```
+И не забудь добавить в импорт из `actions` метод `addAnswer`
+
+***
+
+5. <!-- $ class="li-5" -->В компоненте `components/QuizPage.jsx`
+  - В импорт из `material-ui` допиши `TextField`
+  - В стейт добавь параметр `name`, который пока пустая строка
+  - Над кнопками добавь инпут
+     ```html
+     <div>
+         <TextField
+             hintText='Меня зовут'
+             value={this.state.name}
+             onChange={(event, value) => this.setState({name: value})}
+         />
+     </div>
+     ```
+  - В методе `checkAnswers` дополни `this.props.onSubmit`
+     ```js
+     this.props.onSubmit({ name: this.state.name, score: rightAnswers || 0 });
+     ```
+  и в начало метода вставь проверку
+     ```js
+     if (!this.state.name) return;
+     ```
+
+***
+
+6. <!-- $ class="li-6" -->Убедись, что сохранение работает
+
+***
+
+7. <!-- $ class="li-7" -->Почини тесты на `QuizPage`, которые сломались
+  - Для поиска кнопки "Проверить" во всех тестах используй
+     ```js
+     expect(wrapper.find('RaisedButton[label="Проверить"]').exists())
+     ```
+  - В тесте на onSubmit добавь заполнение имени участника викторины
+    ```js
+    wrapper.find('TextField').simulate('change', {target: {value: 'player'}}, 'player');
+    wrapper.find('RaisedButton[label="Проверить"]').simulate('click');
+    expect(onSubmit.callCount).to.equal(1);
+    ```
+
+---
+
+## Результаты шага 7
+
+<div>Теперь ты знаешь:</div>
+
+ - как переключаться между страницами
+
+<div>В твоем приложении:</div>
+
+ - у каждой страницы есть свой адрес
+ - на страницу рейтинга результатов можно перейти по ссылки
+ - сохраняются ответы
+
+<div class="flex"><span>Итоговый код в ветке `step7-finished`</span></div>
+
+---
+
+<div class="flex"><img class="width50" src="assets/penguinscomplete.png"></div>
+
+## Миссия выполнена!
+
+</script></section>
+
+
+</div></div>
+</body>
+</html>
